@@ -3,7 +3,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:my_daily_deeds/actions/auth_actions.dart';
 import 'package:my_daily_deeds/containers/auth_button/google_auth_button.dart';
 import 'package:my_daily_deeds/models/app_state.dart';
-import 'package:my_daily_deeds/routes/home_page.dart';
 import 'package:redux/redux.dart';
 
 class GoogleAuthButtonContainer extends StatelessWidget {
@@ -13,9 +12,7 @@ class GoogleAuthButtonContainer extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (BuildContext context, _ViewModel vm) {
         return GoogleAuthButton(
-            buttonText: vm.buttonText,
-            onPressedCallback: vm.onPressedCallback
-        );
+            buttonText: vm.buttonText, onPressedCallback: vm.onPressedCallback);
       },
     );
   }

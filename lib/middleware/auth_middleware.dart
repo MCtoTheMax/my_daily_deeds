@@ -8,14 +8,16 @@
 // which will return multiple functions that you can add
 // to your store.
 
-
-import 'package:redux/redux.dart';
-import 'package:my_daily_deeds/actions/auth_actions.dart';
-import 'package:my_daily_deeds/models/app_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:my_daily_deeds/actions/auth_actions.dart';
+import 'package:my_daily_deeds/main.dart';
+import 'package:my_daily_deeds/models/app_state.dart';
+import 'package:my_daily_deeds/routes/home_page.dart';
+import 'package:redux/redux.dart';
 
-List<Middleware<AppState>> createAuthMiddleware(){
+List<Middleware<AppState>> createAuthMiddleware() {
   final logIn = _createLogInMiddleware();
   final logOut = _createLogOutMiddleware();
 
@@ -35,10 +37,8 @@ List<Middleware<AppState>> createAuthMiddleware(){
 // the action thats been dispatched
 // and the a special function called next.
 
-
-Middleware<AppState> _createLogInMiddleware(){
-  return(Store store, action, NextDispatcher next)async{
-
+Middleware<AppState> _createLogInMiddleware() {
+  return (Store store, action, NextDispatcher next) async {
     // YOUR LOGIC HERE
     FirebaseUser user;
 
@@ -51,8 +51,8 @@ Middleware<AppState> _createLogInMiddleware(){
     final GoogleSignIn _googleSignIn = GoogleSignIn();
 
     // Actions are classes, so you can Typecheck them
-    if(action is LogIn){
-      try{
+    if (action is LogIn) {
+      try {
         // Try to sign in the user.
         // This method will either log in a user that your Firebase
         // is aware of, or it will prompt the user to log in
@@ -61,7 +61,6 @@ Middleware<AppState> _createLogInMiddleware(){
         GoogleSignInAccount googleUser = await _googleSignIn.signIn();
 
         GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
 
         AuthCredential credential = GoogleAuthProvider.getCredential(
           idToken: googleAuth.idToken,
@@ -82,13 +81,17 @@ Middleware<AppState> _createLogInMiddleware(){
 
         print('User logged in: ${user.displayName}');
 
+        // Navigate to HomePage
+        var router =
+            MaterialPageRoute(builder: (BuildContext context) => HomePage());
+        navigatorKey.currentState.push(router);
+
         // We're going to dispatch a new action if we logged in,
         //
         // We also continue the current cycle below by calling next(action).
 
         store.dispatch(LogInSuccessful(user: user));
-
-      }catch(error){
+      } catch (error) {
         store.dispatch(LogInFailed(error));
       }
     }
@@ -101,17 +104,20 @@ Middleware<AppState> _createLogInMiddleware(){
   };
 }
 
-Middleware<AppState> _createLogOutMiddleware(){
-  return(Store store, action, NextDispatcher next)async{
-
+Middleware<AppState> _createLogOutMiddleware() {
+  return (Store store, action, NextDispatcher next) async {
     // temporary instance
     final FirebaseAuth _auth = FirebaseAuth.instance;
 
-    try{
+    try {
       await _auth.signOut();
       print('Logging out');
+
+      // Navigate to Login
+      navigatorKey.currentState.pop();
+
       store.dispatch(LogOutSuccessful);
-    }catch(error){
+    } catch (error) {
       print('Error while logging out: $error');
     }
 
