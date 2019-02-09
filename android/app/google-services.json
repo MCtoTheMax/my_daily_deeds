@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "422231443130",
+    "firebase_url": "https://my-daily-deeds.firebaseio.com",
+    "project_id": "my-daily-deeds",
+    "storage_bucket": "my-daily-deeds.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422231443130:android:6976e68137f04840",
+        "android_client_info": {
+          "package_name": "com.dmso.mydailydeeds"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422231443130-sd1tn7kkc9f1mh0rvcl1fi1kjg798idb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dmso.mydailydeeds",
+            "certificate_hash": "fba8a7689d9586abc455ef62b80ade4050375fc4"
+          }
+        },
+        {
+          "client_id": "422231443130-rifombmh7r3dmugp77f828j1d4hc8ol3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu2rKnecareIaVhYWDAp-sTq_loie1pKI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422231443130-rifombmh7r3dmugp77f828j1d4hc8ol3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
