@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 
 class GoogleAuthButton extends StatelessWidget {
   final String buttonText;
+  final double buttonWidth;
   final Function onPressedCallback;
 
-  GoogleAuthButton({@required this.buttonText, this.onPressedCallback});
-
+  GoogleAuthButton({@required this.buttonText, this.onPressedCallback, this.buttonWidth});
 
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
       onPressed: onPressedCallback,
       child: Container(
-        width: 230,
-        height: 50,
+        width: buttonWidth,
         alignment: Alignment.center,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
