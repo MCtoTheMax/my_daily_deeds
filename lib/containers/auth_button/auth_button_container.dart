@@ -34,11 +34,9 @@ class _ViewModel {
 
     return _ViewModel(
       buttonText: store.state.currentUser != null ? 'Log out' : 'Log in',
-      buttonWidth: store.state.currentUser != null ? 328 : 200,
+      buttonWidth: 200,
       onPressedCallback: () {
-        if (store.state.currentUser != null) {
-          store.dispatch(LogOut());
-        } else {
+        if (store.state.currentUser == null) {
           store.dispatch(LogIn());
         }
       },

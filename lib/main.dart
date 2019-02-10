@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:my_daily_deeds/middleware/auth_middleware.dart';
+import 'package:my_daily_deeds/middleware/db_middleware.dart';
 import 'package:my_daily_deeds/models/app_state.dart';
 import 'package:my_daily_deeds/reducers/app_reducer.dart';
+import 'package:my_daily_deeds/routes/home_page.dart';
 import 'package:my_daily_deeds/routes/login.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_logging/redux_logging.dart';
@@ -25,6 +27,7 @@ class MainApp extends StatelessWidget {
       // or it's just a function:
       middleware: []
         ..addAll(createAuthMiddleware())
+        ..addAll(createBorrowTasksMiddleware())
         ..add(LoggingMiddleware.printer()));
 
   @override
@@ -35,7 +38,14 @@ class MainApp extends StatelessWidget {
         // NAVIGATORTEST
         navigatorKey: navigatorKey,
         title: title,
-        home: Login(),
+
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Login(),
+          '/homePage': (context) => HomePage(),
+        },
+
+
       ),
     );
   }

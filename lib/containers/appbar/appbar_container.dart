@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:my_daily_deeds/actions/auth_actions.dart';
-import 'package:my_daily_deeds/containers/appbar_container/custom_appbar.dart';
+import 'package:my_daily_deeds/containers/appbar/custom_appbar.dart';
 import 'package:my_daily_deeds/models/app_state.dart';
 import 'package:redux/redux.dart';
 

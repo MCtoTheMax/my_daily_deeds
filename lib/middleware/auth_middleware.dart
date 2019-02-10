@@ -14,7 +14,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:my_daily_deeds/actions/auth_actions.dart';
 import 'package:my_daily_deeds/main.dart';
 import 'package:my_daily_deeds/models/app_state.dart';
-import 'package:my_daily_deeds/routes/home_page.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createAuthMiddleware() {
@@ -82,9 +81,8 @@ Middleware<AppState> _createLogInMiddleware() {
         print('User logged in: ${user.displayName}');
 
         // Navigate to HomePage
-        var router =
-            MaterialPageRoute(builder: (BuildContext context) => HomePage());
-        navigatorKey.currentState.push(router);
+        navigatorKey.currentState.pushNamedAndRemoveUntil(
+            '/homePage', (Route<dynamic> route) => false);
 
         // We're going to dispatch a new action if we logged in,
         //
@@ -114,7 +112,8 @@ Middleware<AppState> _createLogOutMiddleware() {
       print('Logging out');
 
       // Navigate to Login
-      navigatorKey.currentState.pop();
+      navigatorKey.currentState
+          .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
 
       store.dispatch(LogOutSuccessful);
     } catch (error) {
