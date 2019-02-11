@@ -9,6 +9,7 @@ class AppState{
 
   final FirebaseUser currentUser;
   final List<BorrowTask> borrowTasks;
+  final Map<String, dynamic> borrowTaskInput;
 
   FirebaseFirestoreService db = FirebaseFirestoreService();
   StreamSubscription<QuerySnapshot> borrowTaskSub;
@@ -16,6 +17,7 @@ class AppState{
   AppState({
     this.currentUser,
     this.borrowTasks = const [],
+    this.borrowTaskInput,
   });
 
 
@@ -24,6 +26,7 @@ class AppState{
     return AppState(
       currentUser: currentUser ?? this.currentUser,
       borrowTasks: borrowTasks ?? this.borrowTasks,
+      borrowTaskInput: borrowTaskInput ?? this.borrowTaskInput,
     );
   }
 

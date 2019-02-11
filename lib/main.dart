@@ -4,6 +4,7 @@ import 'package:my_daily_deeds/middleware/auth_middleware.dart';
 import 'package:my_daily_deeds/middleware/db_middleware.dart';
 import 'package:my_daily_deeds/models/app_state.dart';
 import 'package:my_daily_deeds/reducers/app_reducer.dart';
+import 'package:my_daily_deeds/routes/borrow_task_route.dart';
 import 'package:my_daily_deeds/routes/home_page.dart';
 import 'package:my_daily_deeds/routes/login.dart';
 import 'package:redux/redux.dart';
@@ -43,6 +44,7 @@ class MainApp extends StatelessWidget {
         routes: {
           '/': (context) => Login(),
           '/homePage': (context) => HomePage(),
+          '/borrowTask': (context) => BorrowTaskRoute(),
         },
 
 

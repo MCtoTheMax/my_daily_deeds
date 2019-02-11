@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_daily_deeds/containers/add_borrow_task_button/add_borrow_task_button_container.dart';
 import 'package:my_daily_deeds/containers/appbar/appbar_container.dart';
+import 'package:my_daily_deeds/main.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,6 +14,8 @@ class HomePage extends StatelessWidget {
             children: <Widget>[],
           ),
         ),
-        floatingActionButton: AddBorrowTaskButtonContainer());
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          navigatorKey.currentState.pushNamed('/borrowTask');
+        }));
   }
 }

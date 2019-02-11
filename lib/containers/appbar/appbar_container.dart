@@ -6,13 +6,17 @@ import 'package:my_daily_deeds/models/app_state.dart';
 import 'package:redux/redux.dart';
 
 class AppbarContainer extends StatelessWidget implements PreferredSizeWidget {
+  final title;
+
+  const AppbarContainer({Key key, this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, _ViewModel>(
       converter: _ViewModel.fromStore,
       builder: (BuildContext context, _ViewModel vm) {
         return CustomAppbar(
-          title: vm.title,
+          title: title != null ? title : vm.title,
           onPressedCallback: vm.onPressedCallback,
         );
       },
