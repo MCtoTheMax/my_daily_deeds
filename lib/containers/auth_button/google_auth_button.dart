@@ -5,7 +5,8 @@ class GoogleAuthButton extends StatelessWidget {
   final double buttonWidth;
   final Function onPressedCallback;
 
-  GoogleAuthButton({@required this.buttonText, this.onPressedCallback, this.buttonWidth});
+  GoogleAuthButton(
+      {@required this.buttonText, this.onPressedCallback, this.buttonWidth});
 
   @override
   Widget build(BuildContext context) {

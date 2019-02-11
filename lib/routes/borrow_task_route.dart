@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_daily_deeds/containers/add_borrow_task_button/add_borrow_task_button_container.dart';
 import 'package:my_daily_deeds/containers/appbar/appbar_container.dart';
 
-class BorrowTaskRoute extends StatelessWidget  {
-
+class BorrowTaskRoute extends StatelessWidget {
   var _personController = TextEditingController();
   var _itemController = TextEditingController();
   var _deadlineController = TextEditingController();
@@ -20,21 +19,15 @@ class BorrowTaskRoute extends StatelessWidget  {
           children: <Widget>[
             TextField(
               controller: _personController,
-              decoration: InputDecoration(
-                hintText: 'Person'
-              ),
+              decoration: InputDecoration(hintText: 'Person'),
             ),
             TextField(
               controller: _itemController,
-              decoration: InputDecoration(
-                  hintText: 'Item'
-              ),
+              decoration: InputDecoration(hintText: 'Item'),
             ),
             TextField(
               controller: _deadlineController,
-              decoration: InputDecoration(
-                  hintText: 'Deadline'
-              ),
+              decoration: InputDecoration(hintText: 'Deadline'),
             ),
             MyInherited(
               data: {
@@ -42,7 +35,8 @@ class BorrowTaskRoute extends StatelessWidget  {
                 'item': _itemController,
                 'deadline': _deadlineController,
               },
-              child: AddBorrowTaskButtonContainer(),
+              child: AddBorrowTaskButtonContainer(
+                  _personController, _itemController, _deadlineController),
             )
           ],
         ),

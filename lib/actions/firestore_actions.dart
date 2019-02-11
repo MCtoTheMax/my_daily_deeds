@@ -1,7 +1,6 @@
-
 import 'package:my_daily_deeds/models/tasks.dart';
 
-class AddBorrowTask{}
+class AddBorrowTask {}
 
 class LoadBorrowTaskAction {
   final List<BorrowTask> borrowTasks;

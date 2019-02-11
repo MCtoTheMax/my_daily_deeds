@@ -20,7 +20,6 @@ final authReducer = combineReducers<FirebaseUser>([
 
   TypedReducer<FirebaseUser, LogInSuccessful>(_logIn),
   TypedReducer<FirebaseUser, LogOut>(_logOut),
-
 ]);
 
 // Actual reducer methods:
@@ -30,7 +29,7 @@ final authReducer = combineReducers<FirebaseUser>([
 // All the reducer needs to do is replace the slice of state
 // That handles user.
 
-FirebaseUser _logIn(FirebaseUser user, action){
+FirebaseUser _logIn(FirebaseUser user, action) {
   return action.user;
 }
 

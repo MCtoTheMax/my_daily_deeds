@@ -46,8 +46,6 @@ class MainApp extends StatelessWidget {
           '/homePage': (context) => HomePage(),
           '/borrowTask': (context) => BorrowTaskRoute(),
         },
-
-
       ),
     );
   }

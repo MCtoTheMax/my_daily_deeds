@@ -3,7 +3,7 @@ class BorrowTask {
   String _id;
   String _person;
   String _item;
-  DateTime _deadline;
+  String _deadline;
 
   BorrowTask(this._id, this._person, this._item, this._deadline);
 

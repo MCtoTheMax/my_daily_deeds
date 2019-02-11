@@ -5,8 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_daily_deeds/models/tasks.dart';
 import 'package:my_daily_deeds/services/firebase_firestore_service.dart';
 
-class AppState{
-
+class AppState {
   final FirebaseUser currentUser;
   final List<BorrowTask> borrowTasks;
   final Map<String, dynamic> borrowTaskInput;
@@ -20,9 +19,7 @@ class AppState{
     this.borrowTaskInput,
   });
 
-
-
-  AppState copyWith(){
+  AppState copyWith() {
     return AppState(
       currentUser: currentUser ?? this.currentUser,
       borrowTasks: borrowTasks ?? this.borrowTasks,
@@ -30,8 +27,7 @@ class AppState{
     );
   }
 
-  String toString(){
+  String toString() {
     return 'AppState(currentUser: $currentUser)';
   }
 }
-

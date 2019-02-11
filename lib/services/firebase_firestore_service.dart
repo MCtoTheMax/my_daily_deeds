@@ -1,12 +1,12 @@
 import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:my_daily_deeds/models/tasks.dart';
 
-final CollectionReference borrowTaskCollection = Firestore.instance.collection('borrowTasks');
+final CollectionReference borrowTaskCollection =
+    Firestore.instance.collection('borrowTasks');
 
 class FirebaseFirestoreService {
-
-
   // ADD TO ENSURE THAT THE APP RUNS IN THE FUTURE, DOESN'T SEEM TO WORK ATM
 
   //  FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -15,19 +15,21 @@ class FirebaseFirestoreService {
   //      .build();
   //  firestore.setFirestoreSettings(settings);
 
-  static final FirebaseFirestoreService _instance = new FirebaseFirestoreService.internal();
+  static final FirebaseFirestoreService _instance =
+      new FirebaseFirestoreService.internal();
 
   factory FirebaseFirestoreService() => _instance;
 
   FirebaseFirestoreService.internal();
 
-
   // CREATE BORROW TASK
-  Future<BorrowTask> createBorrowTask(String person, String item, DateTime deadline) async {
+  Future<BorrowTask> createBorrowTask(
+      String person, String item, String deadline) async {
     final TransactionHandler createTransaction = (Transaction tx) async {
       final DocumentSnapshot ds = await tx.get(borrowTaskCollection.document());
 
-      final BorrowTask borrowTask = new BorrowTask(ds.documentID, person, item, deadline);
+      final BorrowTask borrowTask =
+          new BorrowTask(ds.documentID, person, item, deadline);
       final Map<String, dynamic> data = borrowTask.toMap();
 
       await tx.set(ds.reference, data);
@@ -61,7 +63,8 @@ class FirebaseFirestoreService {
   // UPDATE BORROW TASK
   Future<dynamic> updateBorrowTask(BorrowTask borrowTask) async {
     final TransactionHandler updateTransaction = (Transaction tx) async {
-      final DocumentSnapshot ds = await tx.get(borrowTaskCollection.document(borrowTask.id));
+      final DocumentSnapshot ds =
+          await tx.get(borrowTaskCollection.document(borrowTask.id));
 
       await tx.update(ds.reference, borrowTask.toMap());
       return {'updated': true};
@@ -79,7 +82,8 @@ class FirebaseFirestoreService {
   // DELETE BORROW TASK
   Future<dynamic> deleteBorrowTask(String id) async {
     final TransactionHandler deleteTransaction = (Transaction tx) async {
-      final DocumentSnapshot ds = await tx.get(borrowTaskCollection.document(id));
+      final DocumentSnapshot ds =
+          await tx.get(borrowTaskCollection.document(id));
 
       await tx.delete(ds.reference);
       return {'deleted': true};

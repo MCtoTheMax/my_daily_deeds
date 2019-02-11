@@ -7,30 +7,30 @@ import 'package:my_daily_deeds/models/tasks.dart';
 import 'package:redux/redux.dart';
 
 class AddBorrowTaskButtonContainer extends StatelessWidget {
+  var personController = TextEditingController();
+  var itemController = TextEditingController();
+  var deadlineController = TextEditingController();
+
+  AddBorrowTaskButtonContainer(
+      this.personController, this.itemController, this.deadlineController);
+
+  BorrowTask _getBorrowTask() {
+    final _person = personController.text;
+    final _item = itemController.text;
+    final _deadline = deadlineController.text;
+    BorrowTask _borrowTask = BorrowTask(null, _person, _item, _deadline);
+    return _borrowTask;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return StoreConnector(
-      converter: _ViewModel.fromStore,
-      builder: (BuildContext context, _ViewModel vm) {
+    return StoreBuilder(
+      builder: (context, Store<AppState> store) {
         return AddBorrowTaskButton(
-          onPressedCallback: vm.onPressedCallback,
+          onPressedCallback: () =>
+              store.dispatch(AddBorrowTaskAction(_getBorrowTask())),
         );
       },
     );
-  }
-}
-
-class _ViewModel {
-  final onPressedCallback;
-
-  _ViewModel({this.onPressedCallback});
-
-  static _ViewModel fromStore(Store<AppState> store) {
-    return _ViewModel(onPressedCallback: () {
-      BorrowTask borrowTask =
-          BorrowTask(null, 'testperson', 'testitem', DateTime.utc(2019, 2, 15));
-
-      store.dispatch(AddBorrowTaskAction(borrowTask));
-    });
   }
 }

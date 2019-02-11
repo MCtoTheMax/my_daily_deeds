@@ -1,19 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
-class LogIn{}
+class LogIn {}
 
-class LogInSuccessful{
+class LogInSuccessful {
   final FirebaseUser user;
 
   LogInSuccessful({@required this.user});
 
-  String toString(){
+  String toString() {
     return 'Login{user: $user}';
   }
 }
 
-class LogInFailed{
+class LogInFailed {
   final dynamic error;
 
   LogInFailed(this.error);
@@ -23,9 +23,9 @@ class LogInFailed{
   }
 }
 
-class LogOut{}
+class LogOut {}
 
-class LogOutSuccessful{
+class LogOutSuccessful {
   LogOutSuccessful();
 
   String toString() {

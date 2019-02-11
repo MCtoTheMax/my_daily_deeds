@@ -12,7 +12,9 @@ class GoogleAuthButtonContainer extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (BuildContext context, _ViewModel vm) {
         return GoogleAuthButton(
-            buttonText: vm.buttonText, buttonWidth: vm.buttonWidth, onPressedCallback: vm.onPressedCallback);
+            buttonText: vm.buttonText,
+            buttonWidth: vm.buttonWidth,
+            onPressedCallback: vm.onPressedCallback);
       },
     );
   }
@@ -23,7 +25,11 @@ class _ViewModel {
   final double buttonWidth;
   final Function onPressedCallback;
 
-  _ViewModel({this.buttonText, this.onPressedCallback, this.buttonWidth,});
+  _ViewModel({
+    this.buttonText,
+    this.onPressedCallback,
+    this.buttonWidth,
+  });
 
   static _ViewModel fromStore(Store<AppState> store) {
     // This is a bit of a more complex _viewModel
